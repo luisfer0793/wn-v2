@@ -1,0 +1,13 @@
+{
+  "name": "wn-v2",
+  "version": "1.0.0",
+  "private": "true",
+  "license": "MIT",
+  "author": "Luis Fernando Jimenez Lopez",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^6.5.1"
+  }
+}
