@@ -1,22 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Space, Title } from '@mantine/core';
+import { Container, Space, Stack, Title } from '@mantine/core';
 import { InformativeForm } from 'components';
-import { InformativeFormDefaultValues } from './components/forms/InformativeForm/InformativeForm.schema';
 
-const AUTOCOMPLETE_VALUES = [
-  { value: 'Primero' },
-  { value: 'Segundo' },
-  { value: 'Tercero' },
-];
+import { useTypedSelector } from './state/store';
+
+import { isAuthenticatedSelector } from './state/slices/authentication/authentication.selector';
+import { useEffect } from 'react';
 
 function App() {
+  const isAuthenticated = useTypedSelector(isAuthenticatedSelector);
+
+  useEffect(() => {
+    console.log('[APP]: Render');
+  });
+
   return (
     <div className="App">
       <header className="App-header">
         <Container>
-          <Title align="center">Yo soy el titulo principal</Title>
-          <Space h="lg" />
-          <InformativeForm />
+          <Stack h="lg">
+            <Title align="center">
+              Usuario logueado: {isAuthenticated ? 'SI' : 'NO'}
+            </Title>
+            <Space h="lg" />
+            <InformativeForm />
+          </Stack>
         </Container>
       </header>
     </div>
