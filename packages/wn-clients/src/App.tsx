@@ -1,10 +1,10 @@
+import { useEffect } from 'react';
 import { Container, Space, Stack, Title } from '@mantine/core';
-import { InformativeForm } from 'components';
+import { InformativeForm, LoginForm } from 'components';
 
 import { useTypedSelector } from './state/store';
 
 import { isAuthenticatedSelector } from './state/slices/authentication/authentication.selector';
-import { useEffect } from 'react';
 
 function App() {
   const isAuthenticated = useTypedSelector(isAuthenticatedSelector);
@@ -23,6 +23,10 @@ function App() {
             </Title>
             <Space h="lg" />
             <InformativeForm />
+            <Title order={2} align="center">
+              Inicia sesión
+            </Title>
+            <LoginForm />
           </Stack>
         </Container>
       </header>

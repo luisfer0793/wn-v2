@@ -14,3 +14,6 @@ export { default as WNAutocompleteInput } from './inputs/WNAutocompleteInput/WNA
 
 // ---- UTILS ----
 export { default as WN_TIME_ZONES } from './utils/timezones.util';
+
+// ---- TYPES ----
+export type { WNClientType } from './types/WNClient.type';
