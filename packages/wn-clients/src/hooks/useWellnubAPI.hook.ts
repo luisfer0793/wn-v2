@@ -28,7 +28,6 @@ const useWellnubAPI = () => {
       async error => {
         const previousRequest = error?.config;
         if (
-          error?.response?.data?.code === 401 &&
           error?.response?.data?.message === 'jwt expired' &&
           !previousRequest?.sent
         ) {

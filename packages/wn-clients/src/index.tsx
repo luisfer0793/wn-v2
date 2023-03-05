@@ -1,10 +1,13 @@
+import 'dayjs/locale/es';
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { PersistGate } from 'redux-persist/integration/react';
-
+import { DatesProvider } from '@mantine/dates';
 import { Global, MantineProvider } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
 
 import App from './App';
 
@@ -31,8 +34,11 @@ root.render(
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <MantineProvider withGlobalStyles withNormalizeCSS theme={Theme}>
-          <Global styles={globalStyles} />
-          <App />
+          <DatesProvider settings={{ locale: 'es' }}>
+            <Notifications />
+            <Global styles={globalStyles} />
+            <App />
+          </DatesProvider>
         </MantineProvider>
       </PersistGate>
     </Provider>

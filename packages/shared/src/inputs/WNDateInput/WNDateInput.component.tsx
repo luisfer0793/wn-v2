@@ -1,8 +1,8 @@
-import { DatePicker, DatePickerProps } from '@mantine/dates';
+import { DatePickerInput, DatePickerInputProps } from '@mantine/dates';
 import { Control, FieldValues, Path, useController } from 'react-hook-form';
 
 interface WNDateInputProps<TFormData extends FieldValues>
-  extends DatePickerProps {
+  extends DatePickerInputProps {
   name: Path<TFormData>;
   control: Control<TFormData>;
 }
@@ -16,7 +16,7 @@ const WNDateInput = <TValues extends FieldValues>({
     field,
     fieldState: { error },
   } = useController({ name, control });
-  return <DatePicker {...restProps} {...field} error={error?.message} />;
+  return <DatePickerInput {...restProps} {...field} error={error?.message} />;
 };
 
 export default WNDateInput;

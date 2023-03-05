@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Grid, Stack } from '@mantine/core';
+import { Button, Grid, Stack, Text } from '@mantine/core';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {
   WN_TIME_ZONES,
@@ -12,7 +12,6 @@ import {
   WNPhoneNumberInput,
   WNTextInput,
   WNTimeInput,
-  WNTimeRangeInput,
 } from '@wn/shared';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -156,22 +155,13 @@ const InformativeForm: FC = () => {
             <WNTimeInput
               name="time"
               control={control}
-              format="12"
               label="Horario"
               description="Selecciona la hora de apertura"
               icon={<FontAwesomeIcon icon={faClock} />}
             />
           </Grid.Col>
           <Grid.Col xs={6}>
-            <WNTimeRangeInput
-              name="appointmentTime"
-              control={control}
-              clearable={false}
-              format="12"
-              label="Hora de la cita"
-              description="Este será el horario de atención para tus pacientes"
-              icon={<FontAwesomeIcon icon={faClock} />}
-            />
+            <Text>Aquí iba el rango</Text>
           </Grid.Col>
           <Grid.Col xs={6}>
             <WNDateInput

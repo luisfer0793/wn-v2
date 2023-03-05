@@ -1,7 +1,6 @@
-import 'dayjs/locale/es-mx';
+import { MantineThemeOverride } from '@mantine/core';
 
-export const Theme = {
-  datesLocale: 'es-mx',
+export const Theme: MantineThemeOverride = {
   fontFamily: "'Outfit', sans-serif",
   headings: {
     fontFamily: "'Outfit', sans-serif",
@@ -12,6 +11,13 @@ export const Theme = {
       defaultProps: {
         component: 'p',
       },
+    },
+    Alert: {
+      styles: () => ({
+        title: {
+          marginBottom: 0,
+        },
+      }),
     },
   },
 };

@@ -2,14 +2,18 @@ import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { Button, Grid, Stack } from '@mantine/core';
+import { Alert, Button, Grid, Stack } from '@mantine/core';
 import { WNPasswordInput, WNTextInput } from '@wn/shared';
 
 import { useTypedDispatch } from 'state/store';
 import { useAuthenticationService } from 'network/services';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAt, faLock } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAt,
+  faLock,
+  faCircleExclamation,
+} from '@fortawesome/free-solid-svg-icons';
 
 import { LoginFormDefaultValues, LoginFormSchema } from './LoginForm.schema';
 
@@ -22,7 +26,7 @@ const LoginForm: FC = () => {
     defaultValues: LoginFormDefaultValues,
   });
 
-  const { mutate: login, isLoading } = useAuthenticationService();
+  const { mutate: login, isLoading, isError } = useAuthenticationService();
 
   const dispatch = useTypedDispatch();
 
@@ -60,6 +64,18 @@ const LoginForm: FC = () => {
             />
           </Grid.Col>
         </Grid>
+
+        {isError && (
+          <Alert
+            icon={<FontAwesomeIcon icon={faCircleExclamation} />}
+            title="No se pudo iniciar sesión"
+            variant="light"
+            color="orange"
+          >
+            Usuario y/o contraseña incorrectos
+          </Alert>
+        )}
+
         <Button type="submit" color="orange" loading={isLoading}>
           Iniciar sesión
         </Button>

@@ -1,7 +1,9 @@
-import { useWellnubAPI } from 'hooks';
+import { useToast, useWellnubAPI } from 'hooks';
 import { useMutation } from '@tanstack/react-query';
-import { useTypedDispatch } from '../../state/store';
-import { setLogin } from '../../state/slices/authentication/authentication.slice';
+import { useTypedDispatch } from 'state/store';
+import { setLogin } from 'state/slices/authentication/authentication.slice';
+import { ToastVariant } from 'utils/enums.util';
+import { NETWORK_ERROR_MESSAGE } from 'utils/constants.util';
 
 interface AuthenticationPayloadProps {
   email: string;
@@ -33,6 +35,7 @@ const useAuthenticationQuery = () => {
 const useAuthenticationService = () => {
   const query = useAuthenticationQuery();
   const dispatch = useTypedDispatch();
+  const toast = useToast();
 
   return useMutation(query, {
     onSuccess: data => {
@@ -57,6 +60,14 @@ const useAuthenticationService = () => {
         }),
       );
     },
+    // onError: ({ response }) => {
+    //   const { isPublic = false, message = '' } = response?.data;
+    //   toast({
+    //     title: isPublic ? 'Inicio de sesión incorrecto' : 'Error',
+    //     variant: isPublic ? ToastVariant.Warning : ToastVariant.Error,
+    //     message: isPublic ? message : NETWORK_ERROR_MESSAGE,
+    //   });
+    // },
   });
 };
 
