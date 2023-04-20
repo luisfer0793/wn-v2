@@ -1,13 +1,13 @@
-import { useTypedDispatch, useTypedSelector } from '../state/store';
+import { useTypedDispatch, useTypedSelector } from 'state/store';
 
-import { authenticationSliceSelector } from '../state/slices/authentication/authentication.selector';
+import { authenticationSliceSelector } from 'state/slices/authentication/authentication.selector';
 import {
   AuthenticationTokensProps,
   LoginPayloadProps,
   setAuthenticationTokens,
   setLogin,
   setLogout,
-} from '../state/slices/authentication/authentication.slice';
+} from 'state/slices/authentication/authentication.slice';
 
 const useAuthenticationSlice = () => {
   const { tokens, isAuthenticated } = useTypedSelector(

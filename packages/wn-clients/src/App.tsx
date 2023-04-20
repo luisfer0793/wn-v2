@@ -1,37 +1,38 @@
 import { useEffect } from 'react';
-import { Container, Space, Stack, Title } from '@mantine/core';
-import { InformativeForm, LoginForm } from 'components';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from 'react-router-dom';
+import { Text } from '@mantine/core';
 
-import { useTypedSelector } from './state/store';
-
-import { isAuthenticatedSelector } from './state/slices/authentication/authentication.selector';
+import { ProtectedRoute } from 'helpers';
+import { AppShell, ClientRoutes } from 'components';
+import { LandingPage, LoginPage } from 'pages';
 
 function App() {
-  const isAuthenticated = useTypedSelector(isAuthenticatedSelector);
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<AppShell />}>
+        <Route index element={<LandingPage />} />
+        <Route path="iniciar-sesion" element={<LoginPage />} />
+
+        {/* RUTAS PROTEGIDAS */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="cliente/*" element={<ClientRoutes />} />
+        </Route>
+
+        <Route path="*" element={<Text>Not Found</Text>} />
+      </Route>,
+    ),
+  );
 
   useEffect(() => {
     console.log('[APP]: Render');
   });
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Container>
-          <Stack h="lg">
-            <Title align="center">
-              Usuario logueado: {isAuthenticated ? 'SI' : 'NO'}
-            </Title>
-            <Space h="lg" />
-            <InformativeForm />
-            <Title order={2} align="center">
-              Inicia sesión
-            </Title>
-            <LoginForm />
-          </Stack>
-        </Container>
-      </header>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

@@ -13,6 +13,8 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import { AuthenticationReducer } from './slices/authentication/authentication.slice';
+import { AppointmentsReducer } from './slices/appointments/appointments.slice';
+import { LayoutReducer } from './slices/layout/layout.slice';
 
 const persistConfig = {
   key: 'root',
@@ -22,6 +24,8 @@ const persistConfig = {
 
 const reducer = combineReducers({
   authentication: AuthenticationReducer,
+  appointments: AppointmentsReducer,
+  layout: LayoutReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);

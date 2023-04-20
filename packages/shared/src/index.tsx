@@ -2,6 +2,7 @@
 export { default as WNButton } from './components/WNButton/WNButton.component';
 
 // ---- FORM INPUTS ----
+export { default as WNDatePicker } from './inputs/WNDatePicker/WNDatePicker.component';
 export { default as WNDateInput } from './inputs/WNDateInput/WNDateInput.component';
 export { default as WNTextInput } from './inputs/WNTextInput/WNTextInput.component';
 export { default as WNTimeInput } from './inputs/WNTimeInput/WNTimeInput.component';
@@ -16,3 +17,8 @@ export { default as WN_TIME_ZONES } from './utils/timezones.util';
 
 // ---- TYPES ----
 export type { WNClientType } from './types/WNClient.type';
+export type { TWNInbodyLocation } from './types/TWNInbodyLocation.type';
+export type { TWNInbodyAppointment } from './types/TWNInbodyAppointment.type';
+export type { TWNNutritionistService } from './types/TWNNutritionistService.type';
+export type { TWNNutritionistAppointment } from './types/TWNNutritionistAppointment.type';
+export type { TWNNutritionistCatalogService } from './types/TWNNutritionistCatalogService.type';

@@ -18,6 +18,7 @@ import {
 import { LoginFormDefaultValues, LoginFormSchema } from './LoginForm.schema';
 
 import { setLogout } from 'state/slices/authentication/authentication.slice';
+import { Navigate } from 'react-router-dom';
 
 const LoginForm: FC = () => {
   const { control, handleSubmit } = useForm({
@@ -26,7 +27,12 @@ const LoginForm: FC = () => {
     defaultValues: LoginFormDefaultValues,
   });
 
-  const { mutate: login, isLoading, isError } = useAuthenticationService();
+  const {
+    mutate: login,
+    isLoading,
+    isError,
+    isSuccess,
+  } = useAuthenticationService();
 
   const dispatch = useTypedDispatch();
 
@@ -37,6 +43,10 @@ const LoginForm: FC = () => {
   const onLogoutHandler = () => {
     dispatch(setLogout());
   };
+
+  if (isSuccess) {
+    return <Navigate to="/cliente" replace />;
+  }
 
   return (
     <form onSubmit={onSubmitHandler}>

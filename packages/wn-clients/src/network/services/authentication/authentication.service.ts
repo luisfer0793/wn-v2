@@ -28,7 +28,7 @@ const useAuthenticationQuery = () => {
         hasLoggedIn: boolean;
         isProfileCompleted: boolean;
       };
-    }>('/v1/auth/login?role=client', payload);
+    }>('/auth/login?role=client', payload);
     return data;
   };
 };
