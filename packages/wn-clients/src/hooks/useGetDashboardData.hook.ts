@@ -3,6 +3,7 @@ import { useQueries } from '@tanstack/react-query';
 
 import { TWNInbodyAppointment, TWNNutritionistAppointment } from '@wn/shared';
 
+import { useGetNutritionalPlanQuery } from 'network/services/common/nutritionalPlan.service';
 import { useGetInbodyAppointmentsQuery } from 'network/services/appointments/inbody.service';
 import { useGetNutritionistAppointmentsQuery } from 'network/services/appointments/nutritionist.service';
 

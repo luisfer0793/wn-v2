@@ -77,5 +77,13 @@ export const Theme: MantineThemeOverride = {
         },
       }),
     },
+    DatePicker: {
+      styles: (theme: MantineTheme) => ({
+        day: {
+          borderRadius: 0,
+          border: `1px solid ${theme.colors.wnSlate[2]}`,
+        },
+      }),
+    },
   },
 };

@@ -106,7 +106,7 @@ const NutritionistAppointmentCard: FC<NutritionistAppointmentCardProps> = ({
             icon={status === 'accepted' ? faCircleInfo : faTriangleExclamation}
             className={classes.colored}
           />
-          <Text size="sm" className={classes.colored}>
+          <Text size="sm">
             {status === 'pending'
               ? nextActionRole === 'nutritionist'
                 ? 'Falta confirmación por parte de tu nutriólogo'

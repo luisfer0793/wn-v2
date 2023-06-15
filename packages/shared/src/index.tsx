@@ -17,6 +17,8 @@ export { default as WN_TIME_ZONES } from './utils/timezones.util';
 
 // ---- TYPES ----
 export type { WNClientType } from './types/WNClient.type';
+export type { TWNMedicalPlan } from './types/TWNMedicalPlan.type';
+export type { TWNNutritionist } from './types/TWNNutritionist.type';
 export type { TWNInbodyLocation } from './types/TWNInbodyLocation.type';
 export type { TWNInbodyAppointment } from './types/TWNInbodyAppointment.type';
 export type { TWNNutritionistService } from './types/TWNNutritionistService.type';

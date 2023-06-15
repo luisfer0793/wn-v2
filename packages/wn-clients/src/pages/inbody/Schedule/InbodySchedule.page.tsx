@@ -25,6 +25,7 @@ const InbodySchedulePage: FC = () => {
           <Grid>
             <Grid.Col xs={6}>
               <WNDatePicker
+                size="lg"
                 name="date"
                 control={control}
                 minDate={sub(new Date(), { days: 15 })}

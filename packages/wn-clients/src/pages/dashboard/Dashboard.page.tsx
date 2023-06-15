@@ -10,6 +10,7 @@ import {
   Text,
   Title,
 } from '@mantine/core';
+import { isEmpty } from 'lodash';
 import { useTypedSelector } from 'state/store';
 import {
   inbodyAppointmentsSelectors,
@@ -19,7 +20,11 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 
-import { InbodyAppointmentCard, NutritionistAppointmentCard } from 'components';
+import {
+  InbodyAppointmentCard,
+  NutritionalPlanCard,
+  NutritionistAppointmentCard,
+} from 'components';
 
 import { useGetDashboardData } from 'hooks';
 
@@ -73,20 +78,51 @@ const DashboardPage = () => {
       <Stack spacing="xl">
         <Box component="section" className={classes.section}>
           <Box p="lg" className={classes.sectionHeader}>
-            <Title order={5}>Consultas con Nutriólogo</Title>
+            <Title order={5}>Mi Programa Nutricional</Title>
             <Text size="sm" color="dimmed">
-              Aquí podrás encontrar todas las citas que tienes agendadas con tu
-              nutiólogo.
+              A continuación podrás ver el programa nutricional que tienes
+              asociado con tu nutriólogo.
             </Text>
           </Box>
           <Box p="lg">
             <Grid>
-              {nutritionistAppointments.map(appointment => (
-                <Grid.Col key={appointment._id} xs={12} sm={6} md={3}>
-                  <NutritionistAppointmentCard appointment={appointment} />
-                </Grid.Col>
-              ))}
+              <Grid.Col xs={12} sm={6} md={3}>
+                <NutritionalPlanCard />
+              </Grid.Col>
             </Grid>
+          </Box>
+        </Box>
+
+        <Box component="section" className={classes.section}>
+          <Box p="lg" className={classes.sectionHeader}>
+            <Title order={5}>Consultas con Nutriólogo</Title>
+            <Text size="sm" color="dimmed">
+              Aquí podrás encontrar todas las citas que tienes agendadas con tu
+              nutriólogo.
+            </Text>
+          </Box>
+          <Box p="lg">
+            {isEmpty(nutritionistAppointments) && (
+              <Alert
+                icon={<FontAwesomeIcon icon={faCircleExclamation} size="sm" />}
+                title="No hay eventos disponibles"
+                variant="light"
+                color="indigo"
+              >
+                Aún no tienes citas programadas con tu nutriólogo, te invitamos
+                a que explores a los mejores profesionales para mejorar tu
+                progreso nutricional
+              </Alert>
+            )}
+            {!isEmpty(nutritionistAppointments) && (
+              <Grid>
+                {nutritionistAppointments.map(appointment => (
+                  <Grid.Col key={appointment._id} xs={12} sm={6} md={3}>
+                    <NutritionistAppointmentCard appointment={appointment} />
+                  </Grid.Col>
+                ))}
+              </Grid>
+            )}
           </Box>
         </Box>
         <Box component="section" className={classes.section}>

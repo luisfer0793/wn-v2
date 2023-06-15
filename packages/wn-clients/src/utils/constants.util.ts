@@ -8,7 +8,7 @@ export const LAYOUT_SIZES = {
   },
 };
 
-export const QUERY_KEYS = {
+export const QUERY_KEYS = Object.freeze({
   APPOINTMENTS: {
     INBODY: {
       GET: 'GET_INBODY_APPOINTMENTS',
@@ -17,7 +17,14 @@ export const QUERY_KEYS = {
       GET: 'GET_NUTRITIONIST_APPOINTMENTS',
     },
   },
-};
+  NUTRITIONIST: {
+    GET_BY_ID: 'GET_NUTRITIONIST_BY_ID',
+    GET_NUTRITIONISTS: 'GET_NUTRITIONISTS',
+  },
+  COMMON: {
+    GET_NUTRITIONAL_PLAN: 'GET_NUTRITIONAL_PLAN',
+  },
+});
 
 export const SERVICE_MODES = {
   onsite: 'Presencial',

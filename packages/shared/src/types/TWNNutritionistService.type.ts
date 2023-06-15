@@ -1,6 +1,6 @@
 import { TWNNutritionistCatalogService } from './TWNNutritionistCatalogService.type';
 
-type TMode = 'site' | 'online' | 'home'[];
+type TMode = ('site' | 'online' | 'home')[];
 
 export type TWNNutritionistService = {
   _id: string;
