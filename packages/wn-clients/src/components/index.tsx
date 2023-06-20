@@ -11,6 +11,7 @@ export { default as NutritionistAppointmentCard } from './cards/Appointment/Nutr
 export { default as NutritionalPlanCard } from './cards/Common/NutritionalPlan/NutritionalPlanCard.component';
 
 // ---- UI ----
+export { default as UserAvatarDropdown } from './ui/UserAvatarDropdown/UserAvatarDropdown.component';
 export { default as AutocompleteUserProfileItem } from './ui/AutocompleteUserProfileItem/AutocompleteUserProfileItem.component';
 
 // ---- LAYOUT ----

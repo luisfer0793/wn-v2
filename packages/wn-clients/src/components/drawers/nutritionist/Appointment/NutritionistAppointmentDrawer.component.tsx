@@ -9,7 +9,6 @@ import {
   Alert,
 } from '@mantine/core';
 import { format } from 'date-fns';
-import { isEmpty } from 'lodash';
 import { es } from 'date-fns/locale';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -25,7 +24,6 @@ import { nutritionistAppointmentSelector } from 'state/slices/appointments/appoi
 
 import { useStyles } from './NutritionistAppointmentDrawer.styles';
 import { useGetNutritionistByIdQuery } from 'network/services';
-import { useEffect, useState } from 'react';
 
 const NutritionistAppointmentDrawer = () => {
   const appointment = useTypedSelector(nutritionistAppointmentSelector);

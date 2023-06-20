@@ -42,3 +42,9 @@ export const MODALS = {
     PASSES_WARNING: 'InbodyPassesWarning',
   },
 } as const;
+
+export const Z_INDEXES = {
+  OVERLAY: 100,
+  NAVBAR: 101,
+  DRAWER: 102,
+};

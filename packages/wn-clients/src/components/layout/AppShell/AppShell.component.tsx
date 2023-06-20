@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
+import { Box } from '@mantine/core';
+
 import Header from '../Header/Header.component';
 import Footer from '../Footer/Footer.component';
 import Navbar from '../Navbar/Navbar.component';
@@ -28,9 +30,9 @@ const AppShell: FC = () => {
       {isAuthenticated && <Navbar />}
       <div className={classes.shell}>
         <Header />
-        <main className={classes.main}>
+        <Box component="main" className={classes.main}>
           <Outlet />
-        </main>
+        </Box>
         <Footer />
       </div>
     </>

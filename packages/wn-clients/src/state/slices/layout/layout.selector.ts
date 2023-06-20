@@ -6,3 +6,8 @@ export const drawerSelector = createSelector(
   [(state: RootState) => state.layout.drawers, (_, name: TDrawer) => name],
   (drawers, name) => drawers[name],
 );
+
+export const navbarVisibilitySelector = createSelector(
+  [(state: RootState) => state.layout.navbar.isVisible],
+  isVisible => isVisible,
+);

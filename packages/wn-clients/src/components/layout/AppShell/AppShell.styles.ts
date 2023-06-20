@@ -17,6 +17,10 @@ export const useStyles = createStyles(
       width: isAuthenticated
         ? `calc(100% - ${LAYOUT_SIZES.NAVBAR.WIDTH}px)`
         : '100%',
+      [theme.fn.smallerThan('md')]: {
+        left: 0,
+        width: '100%',
+      },
     },
     main: {
       flexGrow: 1,
