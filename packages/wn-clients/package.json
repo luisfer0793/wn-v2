@@ -35,7 +35,7 @@
     "yup": "^1.0.0"
   },
   "scripts": {
-    "start": "PORT=3000 craco start",
+    "start": "cross-env PORT=3000 craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "craco eject"
@@ -60,6 +60,7 @@
   },
   "devDependencies": {
     "@craco/craco": "^7.0.0",
+    "cross-env": "^7.0.3",
     "prettier": "^2.8.4"
   }
 }
