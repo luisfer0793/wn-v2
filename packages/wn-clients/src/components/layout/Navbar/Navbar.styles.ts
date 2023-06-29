@@ -26,10 +26,15 @@ export const useStyles = createStyles(
       border: `1px solid ${theme.colors.wnSlate[3]}`,
     },
     navlink: {
+      fontSize: theme.fontSizes.sm,
+      textDecoration: 'none',
+      color: 'currentcolor',
       '&:hover': {
         color: theme.colors.orange[5],
-        backgroundColor: 'initial',
       },
+    },
+    acive: {
+      color: theme.colors.orange[5],
     },
   }),
 );

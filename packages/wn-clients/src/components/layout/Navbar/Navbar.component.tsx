@@ -34,7 +34,9 @@ const Navbar: FC = () => {
   const dispatch = useTypedDispatch();
 
   const onCloseNavbarHandler = () => {
-    dispatch(setNavbarVisibility(false));
+    if (isNavbarVisible) {
+      dispatch(setNavbarVisibility(false));
+    }
   };
 
   return (
@@ -61,37 +63,44 @@ const Navbar: FC = () => {
       </MantineNavbar.Section>
       <MantineNavbar.Section grow p="md" component={ScrollArea}>
         <Stack spacing="xl">
-          <section>
+          <Stack spacing="md">
             <Title order={6}>Enlaces</Title>
-            {LINKS.COMMON.map(link => (
-              <Link
-                to={link.to}
-                key={nanoid()}
-                color="orange"
-                // variant="subtle"
-                // icon={<FontAwesomeIcon icon={link.icon} size="xs" />}
-                className={({ isActive }) => cx(isActive && classes.navlink)}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </section>
-          <section>
-            <Title order={6}>Profesionales de la salud</Title>
-            {LINKS.HEALTH_PROFESSIONALS.map(link => (
-              <NavLink
-                {...link}
-                key={nanoid()}
-                color="orange"
-                variant="subtle"
-                icon={<FontAwesomeIcon icon={link.icon} size="xs" />}
-                active={pathname.includes(link.label.toLowerCase())}
-                classNames={{
-                  root: classes.navlink,
-                }}
-              />
-            ))}
-          </section>
+            <Stack spacing="sm">
+              {LINKS.COMMON.map(link => (
+                <Group onClick={onCloseNavbarHandler}>
+                  <FontAwesomeIcon icon={link.icon} size="xs" />
+                  <Link
+                    to={link.to}
+                    key={nanoid()}
+                    className={({ isActive }) =>
+                      cx(classes.navlink, isActive && classes.acive)
+                    }
+                  >
+                    {link.label}
+                  </Link>
+                </Group>
+              ))}
+            </Stack>
+          </Stack>
+          <Stack spacing="md">
+            <Stack spacing="md">
+              <Title order={6}>Profesionales de la salud</Title>
+              {LINKS.HEALTH_PROFESSIONALS.map(link => (
+                <Group onClick={onCloseNavbarHandler}>
+                  <FontAwesomeIcon icon={link.icon} size="xs" />
+                  <Link
+                    to={link.to}
+                    key={nanoid()}
+                    className={({ isActive }) =>
+                      cx(classes.navlink, isActive && classes.acive)
+                    }
+                  >
+                    {link.label}
+                  </Link>
+                </Group>
+              ))}
+            </Stack>
+          </Stack>
         </Stack>
       </MantineNavbar.Section>
     </MantineNavbar>
